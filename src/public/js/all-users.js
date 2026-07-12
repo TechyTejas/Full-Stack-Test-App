@@ -74,6 +74,7 @@ async function deleteUser(id, row) {
         if (!res.ok) {
             throw new Error('Failed to delete user');
         }
+        //remove() is a DOM method used to remove an HTML element from the web page.
         row.remove();
         showAlert('User deleted successfully.', 'success');
         if (!tbody.children.length) {

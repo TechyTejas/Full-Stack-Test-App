@@ -6,6 +6,7 @@ const db = require('./static/js/utils/db-connection');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Everything inside this folder can be accessed directly by the browser.
 app.use(express.static(path.join(__dirname, 'public')));
 
 //routes
