@@ -13,9 +13,13 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/users', userRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.send('Hello World Tejass');
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+db.sync({force: false}).then(()=>{
+    app.listen(port, ()=>{
+        console.log(`Server is running on port ${port}`);
+    });
+}).catch((err) => {
+    console.log(err);
+})
