@@ -2,18 +2,17 @@ const TestAppUsers = require('../models/test-app-users');
 
 const createTestUser = async (req, res) => {
     try {
-        const {id, name, email, password} = req.body;
+        const {name, email, password} = req.body;
         const test_user = await TestAppUsers.create({
-            id: id,
             name: name,
             email: email,
             password: password,
         });
         console.log(`User created with name ${name}`);
-        res.status(200).send(`User ${name} added successfully`);
+        res.status(200).json({ message: `User ${name} added successfully`, user: test_user });
     } catch (err) {
         console.log(err.message);
-        res.status(500).send("Error additing details");
+        res.status(500).send("Error adding details");
         return;
     }
 }
@@ -21,19 +20,32 @@ const createTestUser = async (req, res) => {
 const getUsers = async (req, res) => {
     try{
         const users = await TestAppUsers.findAll();
-        if(users.length === 0) {
-            res.status(404).send("No Students Found");
-            return;
-        }
         console.log("All users fetched successfully");
-        res.status(200).send(users);
+        res.status(200).json(users);
     } catch (err) {
         console.log(err.message);
-        res.status(500).send(users);
+        res.status(500).send("Error fetching users");
+    }
+}
+
+const deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedCount = await TestAppUsers.destroy({ where: { id } });
+        if (!deletedCount) {
+            res.status(404).send("User not found");
+            return;
+        }
+        console.log(`User ${id} deleted successfully`);
+        res.status(200).json({ message: "User deleted successfully" });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send("Error deleting user");
     }
 }
 
 module.exports = {
     createTestUser,
-    getUsers
+    getUsers,
+    deleteUser
 }

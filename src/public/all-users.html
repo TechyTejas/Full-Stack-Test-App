@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Users</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div class="page wide">
+        <div class="card">
+            <div class="header-row">
+                <h1>All Users</h1>
+                <a href="/login" class="link-btn">+ Add User</a>
+            </div>
+
+            <div id="alert" class="alert"></div>
+            <div id="loading" class="loading-state">Loading users…</div>
+            <div id="empty" class="empty-state" style="display:none;">No users found yet.</div>
+
+            <table id="users-table" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="users-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/js/all-users.js"></script>
+</body>
+</html>

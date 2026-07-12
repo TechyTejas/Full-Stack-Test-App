@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add User</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div class="page">
+        <div class="card">
+            <h1>Add a New User</h1>
+            <p class="subtitle">Fill in the details below to create a user record.</p>
+
+            <div id="alert" class="alert"></div>
+
+            <form id="user-form" novalidate>
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required minlength="6" />
+                </div>
+                <button type="submit" class="btn-primary" id="submit-btn">Add User</button>
+            </form>
+
+            <div id="post-submit" class="post-submit">
+                <a href="/all-users" class="btn-secondary" style="display:block; text-align:center; text-decoration:none;">Check All Users</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/login.js"></script>
+</body>
+</html>
